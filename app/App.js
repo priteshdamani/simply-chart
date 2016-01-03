@@ -1,9 +1,14 @@
 require('./App.scss');
 require('file?name=[name].[ext]!../public/index.html');
+const sampleData = require('json!./user_sample.json');
 import React from 'react';
 import ReactDOM from 'react-dom';
-import rd3 from 'react-d3';
 import queryString from 'query-string';
+// require `react-d3-core` for Chart component, which help us build a blank svg and chart title.
+const Chart = require('react-d3-core').Chart;
+// require `react-d3-basic` for Line chart component.
+const LineChart = require('react-d3-basic').LineChart;
+
 
 // TODO: Implement socket.io
 // https://github.com/socketio/socket.io-client
@@ -11,20 +16,9 @@ import queryString from 'query-string';
 // const socketClient = require('socket.io-client')('http://localhost');
 
 const App = React.createClass({
-    // TODO: Learn about the React lifecycle:
-    // https://facebook.github.io/react/docs/component-specs.html#lifecycle-methods
     getInitialState () {
-        // Load 'state' with initial data.
-        let barData = [
-            {
-                "values": [
-                    {"x": 1, "y": 91},
-                    {"x": 2, "y": 90},
-                    {"x": 3, "y": 85}]
-            }
-        ];
         return {
-            barData: barData
+            data: sampleData
         }
     },
 
@@ -32,42 +26,55 @@ const App = React.createClass({
     componentDidMount(){
         // TODO: Implement web sockets
         // Proof of concept for data updates
-        setInterval(()=> {
-            // TIP: es6, 'this' is lexically scoped because we use ()=>
-            this._updateChart();
-        }, 800);
+        //setInterval(()=> {
+        //    this._updateChart();
+        //}, 800);
     },
 
-    // TODO: Add useful charts
-    // Samples: https://reactiva.github.io/react-d3-website/
-    // Src: https://github.com/esbullington/react-d3
-    _renderBarChart(){
-        let BarChart = rd3.BarChart;
-        return <BarChart data={ this.state.barData }
-                         width={500}
-                         height={200}
-                         fill={'#3182bd'}
-                         title='Bar Chart'
-                         yAxisLabel='Label'
-                         xAxisLabel='Value'/>
+    // http://www.reactd3.org/get_start/
+    _renderChart(){
+        const width = 700,
+            height = 300,
+            margins = {left: 100, right: 100, top: 50, bottom: 50},
+            title = 'User sample',
+        // chart series,
+        // field: is what field your data want to be selected
+        // name: the name of the field that display in legend
+        // color: what color is the line
+            chartSeries = [
+                {
+                    field: 'BMI',
+                    name: 'BMI',
+                    color: '#ff7f0e'
+                }
+            ],
+        // your x accessor
+            x = function (d) {
+                return d.index;
+            };
+        return <Chart title={title}
+                      width={width}
+                      height={height}
+                      margins={margins}>
+            <LineChart
+                margins={margins}
+                title={title}
+                data={this.state.data}
+                width={width}
+                height={height}
+                chartSeries={chartSeries}
+                x={x}/>
+        </Chart>
     },
 
     _updateChart(){
         let min = 0, max = 100;
+
         function getRandomArbitrary(min, max) {
             return Math.floor(Math.random() * (max - min) + min);
         }
 
-        this.setState({
-            barData: [
-                {
-                    "values": [
-                        {"x": 1, "y": getRandomArbitrary(min, max)},
-                        {"x": 2, "y": getRandomArbitrary(min, max)},
-                        {"x": 3, "y": getRandomArbitrary(min, max)}]
-                }
-            ]
-        });
+        this.setState({});
     },
 
     render(){
@@ -77,7 +84,7 @@ const App = React.createClass({
                     <input type="text" placeholder="websocket url"/>
                 </header>
                 <section>
-                    {this._renderBarChart()}
+                    {this._renderChart()}
                 </section>
             </div>
         )
