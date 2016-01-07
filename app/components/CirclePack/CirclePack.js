@@ -5,15 +5,16 @@ const Chart = require('react-d3-core').Chart;
 
 
 const CirclePack = React.createClass({
-  //propTypes: {
-  //  height: React.PropTypes.number.isRequired,
-  //  width: React.PropTypes.number.isRequired
-  //},
+  propTypes: {
+    height: React.PropTypes.number.isRequired,
+    width: React.PropTypes.number.isRequired,
+    r: React.PropTypes.number.isRequired
+  },
 
   _renderBubbleZoom() {
-    var w = 1280,
-        h = 800,
-        r = 720,
+    var w = this.props.width,
+        h = this.props.height,
+        r = this.props.r,
         x = d3.scale.linear().range([0, r]),
         y = d3.scale.linear().range([0, r]),
         node,

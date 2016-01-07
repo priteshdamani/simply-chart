@@ -1,4 +1,4 @@
-require('./app.scss');
+require('./App.scss');
 require('file?name=[name].[ext]!../public/index.html');
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -6,9 +6,7 @@ import CirclePack from './components/CirclePack/CirclePack';
 
 const App = React.createClass({
   getInitialState () {
-    return {
-
-    }
+    return {}
   },
 
   render(){
@@ -17,7 +15,9 @@ const App = React.createClass({
           <header className="search">
             <input type="text" placeholder="websocket url"/>
           </header>
-          <CirclePack/>
+          <CirclePack width={1280}
+                      height={800}
+                      r={720}/>
         </div>
     )
   }
