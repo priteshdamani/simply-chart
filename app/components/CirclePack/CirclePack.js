@@ -6,19 +6,10 @@ const Chart = require('react-d3-core').Chart;
 const LineChart = require('react-d3-basic').LineChart;
 
 
-const SimplyChart = React.createClass({
+const CirclePack = React.createClass({
     propTypes: {
-        height: '',
-        width: '',
-        margins: '',
-        title: 'BMI',
-        chartSeries: [
-            {
-                field: 'BMI',
-                name: 'BMI',
-                color: '#ff7f0e'
-            }
-        ]
+        height: React.PropTypes.number.isRequired,
+        width: React.PropTypes.number.isRequired
     },
     componentDidMount(){
         this.setState({
@@ -32,6 +23,6 @@ const SimplyChart = React.createClass({
         )
     }
 });
-export default SimplyChart;
+export default CirclePack;
 
 
