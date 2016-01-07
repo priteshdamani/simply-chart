@@ -5,10 +5,6 @@ import ReactDOM from 'react-dom';
 import CirclePack from './components/CirclePack/CirclePack';
 
 const App = React.createClass({
-  getInitialState () {
-    return {}
-  },
-
   render(){
     return (
         <div>
