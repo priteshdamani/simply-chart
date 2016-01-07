@@ -1,5 +1,5 @@
+require('./CirclePack.scss');
 import React from 'react';
-
 // require `react-d3-core` for Chart component, which help us build a blank svg and chart title.
 const Chart = require('react-d3-core').Chart;
 

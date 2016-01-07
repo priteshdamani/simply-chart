@@ -4,8 +4,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import CirclePack from './components/CirclePack/CirclePack';
 
-const Chart = require('react-d3-core').Chart;
-
 const App = React.createClass({
   getInitialState () {
     return {
