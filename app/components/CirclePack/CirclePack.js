@@ -2,6 +2,7 @@ require('./CirclePack.scss');
 import React from 'react';
 // require `react-d3-core` for Chart component, which help us build a blank svg and chart title.
 const Chart = require('react-d3-core').Chart;
+const jsonData = './flare.json';
 
 
 const CirclePack = React.createClass({
@@ -18,10 +19,6 @@ const CirclePack = React.createClass({
     //});
   },
 
-  _zoom(){
-
-  },
-
   _renderCircle() {
     const w = this.props.width,
         h = this.props.height,
@@ -30,19 +27,19 @@ const CirclePack = React.createClass({
         y = d3.scale.linear().range([0, r]),
         node,
         root;
-    var pack = d3.layout.pack()
+    const pack = d3.layout.pack()
         .size([r, r])
         .value((d)=> {
           return d.size;
         });
 
-    var vis = d3.select('body').insert('svg:svg', 'h2')
+    const vis = d3.select('body').insert('svg:svg', 'h2')
         .attr('width', w)
         .attr('height', h)
         .append('svg:g')
         .attr('transform', 'translate(' + (w - r) / 2 + ',' + (h - r) / 2 + ')');
 
-    function zoom(d, i) {
+    const zoom = (d, i)=> {
       const k = r / d.r / 2;
       x.domain([d.x - d.r, d.x + d.r]);
       y.domain([d.y - d.r, d.y + d.r]);
@@ -74,10 +71,10 @@ const CirclePack = React.createClass({
 
       node = d;
       d3.event.stopPropagation();
-    }
+    };
 
 
-    d3.json('./flare.json', (data)=> {
+    d3.json(jsonData, (data)=> {
       node = root = data;
 
       const nodes = pack.nodes(root);
