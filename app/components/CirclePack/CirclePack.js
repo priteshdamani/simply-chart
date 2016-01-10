@@ -9,43 +9,7 @@ const CirclePack = React.createClass({
     height: React.PropTypes.number.isRequired,
     width: React.PropTypes.number.isRequired,
     r: React.PropTypes.number.isRequired,
-    data: React.PropTypes.array.isRequired
-  },
-
-  getInitialState() {
-    return {
-      data: {
-        "name": "",
-        "children": [
-          {
-            "name": "Microsite",
-            "children": [
-              {
-                "name": "Clicks",
-                "size": 253
-              },
-              {
-                "name": "Impressions",
-                "size": 34
-              }
-            ]
-          },
-          {
-            "name": "Superwidget",
-            "children": [
-              {
-                "name": "Clicks",
-                "size": 334
-              },
-              {
-                "name": "Impressions",
-                "size": 500
-              }
-            ]
-          }
-        ]
-      }
-    }
+    data: React.PropTypes.object.isRequired
   },
 
   componentDidMount(){
@@ -110,7 +74,7 @@ const CirclePack = React.createClass({
     };
 
 
-    node = root = this.state.data;
+    node = root = this.props.data;
 
     const nodes = pack.nodes(root);
 

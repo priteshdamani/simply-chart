@@ -5,6 +5,41 @@ import ReactDOM from 'react-dom';
 import CirclePack from './components/CirclePack/CirclePack';
 
 const App = React.createClass({
+  getInitialState(){
+    return {
+      data: {
+        "name": "",
+        "children": [
+          {
+            "name": "Microsite",
+            "children": [
+              {
+                "name": "Clicks",
+                "size": 253
+              },
+              {
+                "name": "Impressions",
+                "size": 34
+              }
+            ]
+          },
+          {
+            "name": "Superwidget",
+            "children": [
+              {
+                "name": "Clicks",
+                "size": 334
+              },
+              {
+                "name": "Impressions",
+                "size": 500
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
   render(){
     return (
         <div>
@@ -13,7 +48,8 @@ const App = React.createClass({
           </header>
           <CirclePack width={1280}
                       height={800}
-                      r={720}/>
+                      r={720}
+                      data={this.state.data}/>
         </div>
     )
   }
