@@ -11,6 +11,42 @@ const CirclePack = React.createClass({
     r: React.PropTypes.number.isRequired
   },
 
+  getInitialState() {
+    return {
+      data: {
+        "name": "",
+        "children": [
+          {
+            "name": "Microsite",
+            "children": [
+              {
+                "name": "Clicks",
+                "size": 253
+              },
+              {
+                "name": "Impressions",
+                "size": 34
+              }
+            ]
+          },
+          {
+            "name": "Superwidget",
+            "children": [
+              {
+                "name": "Clicks",
+                "size": 334
+              },
+              {
+                "name": "Impressions",
+                "size": 500
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+
   componentDidMount(){
     this._renderCircle();
     //this.setState({
@@ -73,55 +109,52 @@ const CirclePack = React.createClass({
     };
 
 
-    d3.json(jsonData, (data)=> {
-      node = root = data;
-      //console.table(data.children);
+    node = root = this.state.data;
 
-      const nodes = pack.nodes(root);
+    const nodes = pack.nodes(root);
 
-      vis.selectAll('circle')
-          .data(nodes)
-          .enter().append('svg:circle')
-          .attr('class', (d)=> {
-            return d.children ? 'parent' : 'child';
-          })
-          .attr('cx', (d)=> {
-            return d.x;
-          })
-          .attr('cy', (d)=> {
-            return d.y;
-          })
-          .attr('r', (d)=> {
-            return d.r;
-          })
-          .on('click', (d)=> {
-            return zoom(node == d ? root : d);
-          });
+    vis.selectAll('circle')
+        .data(nodes)
+        .enter().append('svg:circle')
+        .attr('class', (d)=> {
+          return d.children ? 'parent' : 'child';
+        })
+        .attr('cx', (d)=> {
+          return d.x;
+        })
+        .attr('cy', (d)=> {
+          return d.y;
+        })
+        .attr('r', (d)=> {
+          return d.r;
+        })
+        .on('click', (d)=> {
+          return zoom(node == d ? root : d);
+        });
 
-      vis.selectAll('text')
-          .data(nodes)
-          .enter().append('svg:text')
-          .attr('class', (d)=> {
-            return d.children ? 'parent' : 'child';
-          })
-          .attr('x', (d)=> {
-            return d.x;
-          })
-          .attr('y', (d)=> {
-            return d.y;
-          })
-          .attr('dy', '.35em')
-          .attr('text-anchor', 'middle')
-          .style('opacity', (d)=> {
-            return d.r > 20 ? 1 : 0;
-          })
-          .text((d)=> {
-            return d.name;
-          });
+    vis.selectAll('text')
+        .data(nodes)
+        .enter().append('svg:text')
+        .attr('class', (d)=> {
+          return d.children ? 'parent' : 'child';
+        })
+        .attr('x', (d)=> {
+          return d.x;
+        })
+        .attr('y', (d)=> {
+          return d.y;
+        })
+        .attr('dy', '.35em')
+        .attr('text-anchor', 'middle')
+        .style('opacity', (d)=> {
+          return d.r > 20 ? 1 : 0;
+        })
+        .text((d)=> {
+          return d.name;
+        });
 
-      d3.select(window).on('click', ()=> {
-        zoom(root);
-      });
+    d3.select(window).on('click', ()=> {
+      zoom(root);
     });
   },
 
