@@ -2,45 +2,28 @@
   "name": "",
   "children": [
     {
-      "name": "Warner Brothers",
+      "name": "Microsite",
       "children": [
         {
-          "name": "Microsite",
-          "children": [
-            {
-              "name": "Clicks",
-              "size": 353
-            },
-            {
-              "name": "Impressions",
-              "size": 592
-            }
-          ]
+          "name": "Clicks",
+          "size": 253
         },
         {
-          "name": "Superwidget",
-          "size": 5731
-        },
-        {
-          "name": "List Widget",
-          "size": 7840
+          "name": "Impressions",
+          "size": 34
         }
       ]
     },
     {
-      "name": "Dreamworks",
+      "name": "Superwidget",
       "children": [
         {
-          "name": "Microsite",
-          "size": 3074
+          "name": "Clicks",
+          "size": 334
         },
         {
-          "name": "Superwidget",
-          "size": 454
-        },
-        {
-          "name": "List Widget",
-          "size": 864
+          "name": "Impressions",
+          "size": 500
         }
       ]
     }
