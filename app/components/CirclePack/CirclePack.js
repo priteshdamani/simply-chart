@@ -8,7 +8,8 @@ const CirclePack = React.createClass({
   propTypes: {
     height: React.PropTypes.number.isRequired,
     width: React.PropTypes.number.isRequired,
-    r: React.PropTypes.number.isRequired
+    r: React.PropTypes.number.isRequired,
+    data: React.PropTypes.array.isRequired
   },
 
   getInitialState() {
