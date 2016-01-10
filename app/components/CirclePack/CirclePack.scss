@@ -1,10 +1,12 @@
+$main-fill: #e74e1e;
 text {
-  font-size: 11px;
+  font-size: 12px;
   pointer-events: none;
 }
 
 text.parent {
-  fill: #1f77b4;
+  fill: $main-fill;
+  font-size: 18px;
 }
 
 circle {
@@ -14,16 +16,20 @@ circle {
 }
 
 circle.parent {
-  fill: #1f77b4;
+  fill: $main-fill;
   fill-opacity: .1;
-  stroke: steelblue;
+  stroke: darken($main-fill, 40%);
 }
 
 circle.parent:hover {
-  stroke: #ff7f0e;
-  stroke-width: .5px;
+  stroke: lighten($main-fill, 40%);
+  stroke-width: 1px;
 }
 
 circle.child {
   pointer-events: none;
+}
+
+*:hover {
+  transition: all 0.2s;
 }

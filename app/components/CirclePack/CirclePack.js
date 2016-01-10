@@ -1,9 +1,8 @@
 require('./CirclePack.scss');
+require('react-d3-core');
 import React from 'react';
-// require `react-d3-core` for Chart component, which help us build a blank svg and chart title.
-const Chart = require('react-d3-core').Chart;
-const jsonData = './flare.json';
 
+const jsonData = './flare-small.json';
 
 const CirclePack = React.createClass({
   propTypes: {
@@ -33,7 +32,7 @@ const CirclePack = React.createClass({
           return d.size;
         });
 
-    const vis = d3.select('body').insert('svg:svg', 'h2')
+    const vis = d3.select('.circle-pack').insert('svg:svg')
         .attr('width', w)
         .attr('height', h)
         .append('svg:g')
@@ -76,6 +75,7 @@ const CirclePack = React.createClass({
 
     d3.json(jsonData, (data)=> {
       node = root = data;
+      //console.table(data.children);
 
       const nodes = pack.nodes(root);
 
@@ -126,12 +126,7 @@ const CirclePack = React.createClass({
   },
 
   render(){
-    return (
-        <div>
-        </div>
-    )
+    return (<div className="circle-pack"></div>);
   }
 });
 export default CirclePack;
-
-

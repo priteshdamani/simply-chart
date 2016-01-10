@@ -1,0 +1,48 @@
+{
+  "name": "",
+  "children": [
+    {
+      "name": "Warner Brothers",
+      "children": [
+        {
+          "name": "Microsite",
+          "children": [
+            {
+              "name": "Clicks",
+              "size": 353
+            },
+            {
+              "name": "Impressions",
+              "size": 592
+            }
+          ]
+        },
+        {
+          "name": "Superwidget",
+          "size": 5731
+        },
+        {
+          "name": "List Widget",
+          "size": 7840
+        }
+      ]
+    },
+    {
+      "name": "Dreamworks",
+      "children": [
+        {
+          "name": "Microsite",
+          "size": 3074
+        },
+        {
+          "name": "Superwidget",
+          "size": 454
+        },
+        {
+          "name": "List Widget",
+          "size": 864
+        }
+      ]
+    }
+  ]
+}
