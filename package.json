@@ -12,6 +12,7 @@
   },
   "homepage": "",
   "dependencies": {
+    "d3": "^3.5.16",
     "jscs": "^2.7.0",
     "json-loader": "^0.5.4",
     "npm": "^3.5.2",

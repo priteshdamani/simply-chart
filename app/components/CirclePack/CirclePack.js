@@ -1,6 +1,7 @@
 require('./CirclePack.scss');
 require('react-d3-core');
 import React from 'react';
+import d3 from 'd3';
 
 const jsonData = './flare-small.json';
 
